@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to SmarTourist"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/please"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="please anwser some questions to create a route profile."
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your age."
+            android:gravity="left"/>
+
+
+
+        <EditText
+            android:id="@+id/a1"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your age"
+            android:inputType="number"
+            android:backgroundTint="#4CAF50"/>
+
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your gender."
+            android:gravity="left"/>
+
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:visibility="visible"
+            android:gravity="center"
+            android:id="@+id/a2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:onClick="onRadioButtonClicked"
+                android:buttonTint="@color/colorPrimaryDark"/>
+            <RadioButton android:id="@+id/Female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:onClick="onRadioButtonClicked"
+                android:buttonTint="@color/colorPrimaryDark"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your country."
+            android:gravity="left"/>
+
+        <EditText
+            android:visibility="visible"
+            android:id="@+id/a3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorLink="#4CAF50"
+            android:hint="Your Country."
+            android:inputType="text"
+            android:backgroundTint="#4CAF50"/>
+
+        <TextView
+            android:id="@+id/question4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wich of the following places u´d like to visit?"
+            android:gravity="left"/>
+
+
+        <CheckBox
+            android:id="@+id/Random"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Random"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Museums"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Museums"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Sports"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Extreme Sports"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Concerts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Concerts"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Disco"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Disco"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Bars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Bars"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Movies"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Movies"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Mall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Mall"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/CulturalEvents"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Cultural events"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Bowling"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Bowling"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/VideoGames"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="VideoGames"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/AmusementParks"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="amusement parks"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Libraries"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Libraries"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/ReligiousPlaces"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Religious places"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/RuralNatural"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Rural/Natural"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/Camping"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Camping"
+            android:onClick="CheckBoxClicked"/>
+        <CheckBox
+            android:id="@+id/HistoricPlaces"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Historic Places"
+            android:onClick="CheckBoxClicked"/>
+
+        <Button
+            android:id="@+id/NextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NEXT"
+            android:onClick="next"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
