@@ -75,6 +75,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         startActivity(act2);
     }
 
+    public void jump(View view){
+        Intent act2 = new Intent(view.getContext(),RealMainActivity.class);
+        startActivity(act2);
+    }
+
     public GoogleApiClient buildApiClient(){
         return new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)

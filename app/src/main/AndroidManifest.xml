@@ -46,6 +46,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.remedialguns.smartourist.RealMainActivity" />
         </activity>
+
+        <service
+            android:name=".ConnectionService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
