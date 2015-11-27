@@ -55,5 +55,3 @@ public class ConnectionService extends Service {
         }
     }
 }
-
-

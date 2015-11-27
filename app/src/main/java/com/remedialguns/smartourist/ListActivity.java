@@ -46,7 +46,7 @@ public class ListActivity extends AppCompatActivity {
         if (isBound) {
             PlacesToShow = tcpService.getPlaces();
 
-            //F̶a̶k̶e̶ ̶d̶a̶t̶a̶ Test data
+            //F?a?k?e? ?d?a?t?a? Test data
 //        PlacesToShow[0]= new Place("MUSEO","Museo Nacional Agropecuario", 0.15, 0.4, 0.12);
 //        PlacesToShow[1]= new Place("MUSEO","Museo Arqueológico Junín",0.10, 0.78, 0.44);
 //        PlacesToShow[2]= new Place("MUSEO","Museo Botero", 0.2, 0.8, 0.08);
@@ -59,25 +59,7 @@ public class ListActivity extends AppCompatActivity {
 //        PlacesToShow[9]= new Place("MUSEO","MUSEO MILITAR", 0.07, 0.5, 0.6);
             //Place[] PlacesToShow=tcpService.getPlaces();
 
-            ListAdapter MyAdapter = new MyAdapter(this, PlacesToShow);
 
-            ListView ListPlaces = (ListView) findViewById(R.id.MyList);
-
-            ListPlaces.setAdapter(MyAdapter);
-
-            ListPlaces.setOnItemClickListener(
-                    new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                            Context context = view.getContext();
-                            TextView textViewItem = ((TextView) view.findViewById(R.id.name));
-                            String name = textViewItem.getText().toString();
-                            TextView textViewItem2 = (TextView) findViewById(R.id.description);
-                            String descripcion = textViewItem2.getText().toString();
-                            Toast.makeText(context, "lugar: " + name + ", descripcion: " + descripcion, Toast.LENGTH_SHORT).show();
-                        }
-                    });
         }
     }
 
@@ -109,6 +91,25 @@ public class ListActivity extends AppCompatActivity {
             LocalBinder binder = (LocalBinder) service;
             tcpService = binder.getService();
             PlacesToShow = tcpService.getPlaces();
+            ListAdapter MyAdapter = new MyAdapter(ListActivity.this, PlacesToShow);
+
+            ListView ListPlaces = (ListView) findViewById(R.id.MyList);
+
+            ListPlaces.setAdapter(MyAdapter);
+
+            ListPlaces.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            Context context = view.getContext();
+                            TextView textViewItem = ((TextView) view.findViewById(R.id.name));
+                            String name = textViewItem.getText().toString();
+                            TextView textViewItem2 = (TextView) findViewById(R.id.description);
+                            String descripcion = textViewItem2.getText().toString();
+                            Toast.makeText(context, "lugar: " + name + ", descripcion: " + descripcion, Toast.LENGTH_SHORT).show();
+                        }
+                    });
             isBound = true;
         }
 
