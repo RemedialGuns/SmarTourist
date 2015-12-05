@@ -23,6 +23,9 @@ import com.remedialguns.smartourist.ConnectionService.LocalBinder;
 
 import com.google.android.gms.location.places.Places;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import com.remedialguns.smartourist.MainActivity;
 public class ListActivity extends AppCompatActivity {
 
     ConnectionService tcpService;
@@ -44,6 +47,7 @@ public class ListActivity extends AppCompatActivity {
 
 
         if (isBound) {
+
             PlacesToShow = tcpService.getPlaces();
 
             //F?a?k?e? ?d?a?t?a? Test data

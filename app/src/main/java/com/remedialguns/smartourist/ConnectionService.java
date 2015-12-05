@@ -34,6 +34,7 @@ public class ConnectionService extends Service {
         Place[] PlacesToShow = new Place[10];
 
         //F̶a̶k̶e̶ ̶d̶a̶t̶a̶ Test data
+
         PlacesToShow[0]= new Place("MUSEO","Museo Nacional Agropecuario", 0.15, 0.4, 0.12);
         PlacesToShow[1]= new Place("MUSEO","Museo Arqueológico Junín",0.10, 0.78, 0.44);
         PlacesToShow[2]= new Place("MUSEO","Museo Botero", 0.2, 0.8, 0.08);
