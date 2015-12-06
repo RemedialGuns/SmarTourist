@@ -1,7 +1,11 @@
 package com.remedialguns.smartourist;
 
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Serializable{
+    private static final long serialVersionUID = 9178463713495654837L;
+
     public String type;
     private String name;
     private double distance;

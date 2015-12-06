@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     public String country = "";
     Socket miCliente;
     ObjectOutputStream oos;
-    ObjectInputStream ois;
 
     public void CheckBoxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
@@ -286,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
             oos.writeObject(age);
             oos.writeObject(country);
              //Object resp = ois.readObject();
-
+            miCliente.close();
             Log.d("Mensaje recibido","");
             //si nos conectamos
             if (miCliente.isConnected() == true) {

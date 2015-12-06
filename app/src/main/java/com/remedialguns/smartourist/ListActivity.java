@@ -3,9 +3,11 @@ package com.remedialguns.smartourist;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,13 +27,15 @@ import com.google.android.gms.location.places.Places;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 import com.remedialguns.smartourist.MainActivity;
 public class ListActivity extends AppCompatActivity {
 
     ConnectionService tcpService;
     boolean isBound=false;
-    //Place[] PlacesToShow=tcpService.getPlaces();
-    Place[] PlacesToShow=new Place[10];
+    Place[] PlacesToShow = tcpService.getPlaces();
+    //Place[] PlacesToShow=new Place[12];
 
 
 
@@ -42,6 +46,7 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent i = new Intent(this, ConnectionService.class);
+
         bindService(i, myConnection, Context.BIND_AUTO_CREATE);
 //        PlacesToShow=tcpService.getPlaces();
 
@@ -89,11 +94,16 @@ public class ListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private ServiceConnection myConnection=new ServiceConnection() {
+
         @Override
+
+
         public void onServiceConnected(ComponentName name, IBinder service) {
             LocalBinder binder = (LocalBinder) service;
             tcpService = binder.getService();
+
             PlacesToShow = tcpService.getPlaces();
             ListAdapter MyAdapter = new MyAdapter(ListActivity.this, PlacesToShow);
 
