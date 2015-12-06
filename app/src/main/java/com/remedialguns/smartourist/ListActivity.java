@@ -34,9 +34,58 @@ public class ListActivity extends AppCompatActivity {
 
     ConnectionService tcpService;
     boolean isBound=false;
-    Place[] PlacesToShow = tcpService.getPlaces();
-    //Place[] PlacesToShow=new Place[12];
+    Place[] PlacesToShow = new Place[12];
 
+    Socket miCliente;
+    ObjectInputStream ois;
+
+
+
+    public void enableStrictMode() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+    }
+
+
+    //Conectamos
+    public boolean Connect() {
+        //Obtengo datos ingresados en campos
+        String IP = "192.168.0.13";
+        int PORT = 5555;
+
+        try {//creamos sockets con los valores anteriores
+            miCliente = new Socket(IP, PORT);
+            //Accedo a flujo de salida
+            ois = new ObjectInputStream(miCliente.getInputStream());
+
+            Object[] aux;
+            int aux2 = 0;
+            Place aux3;
+            // int tzise = (int)ois.readObject();
+            while(miCliente.isConnected()) {
+                aux = (Object[])ois.readObject();
+                PlacesToShow[aux2]= new Place("Type",(String)aux[0],(Double)aux[1], (Double)aux[2],1);
+                aux2++;
+                Log.d("Mensaje recibido", (String)aux[0]);
+
+            }
+            //si nos conectamos
+            if (miCliente.isConnected() == true) {
+
+
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            //Si hubo algun error mostrmos error
+            //txtstatus.setTextColor(Color.RED);
+            //txtstatus.setText(" !!! ERROR  !!!");
+            Log.e("Error connect()", "" + e);
+            return false;
+        }
+    }
 
 
     @Override
@@ -50,24 +99,20 @@ public class ListActivity extends AppCompatActivity {
         bindService(i, myConnection, Context.BIND_AUTO_CREATE);
 //        PlacesToShow=tcpService.getPlaces();
 
-
+        enableStrictMode();
+        Connect();
         if (isBound) {
 
-            PlacesToShow = tcpService.getPlaces();
-
-            //F?a?k?e? ?d?a?t?a? Test data
-//        PlacesToShow[0]= new Place("MUSEO","Museo Nacional Agropecuario", 0.15, 0.4, 0.12);
-//        PlacesToShow[1]= new Place("MUSEO","Museo Arqueológico Junín",0.10, 0.78, 0.44);
-//        PlacesToShow[2]= new Place("MUSEO","Museo Botero", 0.2, 0.8, 0.08);
-//        PlacesToShow[3]= new Place("MUSEO","Museo de Zea", 0.3, 0.65, 0.23);
-//        PlacesToShow[4]= new Place("MUSEO","MUSEO DEL ORO", 0.13, 0.56, 0.12);
-//        PlacesToShow[5]= new Place("MUSEO","MUSEO DE ARTE COLONIAL", 0.3, 0.67, 0.14);
-//        PlacesToShow[6]= new Place("MUSEO","MUSEO HISTORICO DE LA POLICIA NACIONAL", 0.34, 0.3, 0.33);
-//        PlacesToShow[8]= new Place("MUSEO","MUSEO DE LOS NIÑOS", 0.05, 0.65, 0.03);
-//        PlacesToShow[7]= new Place("MUSEO","Museo Nacional", 0.15, 0.4, 0.12);
-//        PlacesToShow[9]= new Place("MUSEO","MUSEO MILITAR", 0.07, 0.5, 0.6);
-            //Place[] PlacesToShow=tcpService.getPlaces();
-
+           /* PlacesToShow[0]= new Place("MUSEO","Museo Nacional Agropecuario", 0.15, 0.4, 0.12);
+            PlacesToShow[1]= new Place("MUSEO","Museo Arqueológico Junín",0.10, 0.78, 0.44);
+            PlacesToShow[2]= new Place("MUSEO","Museo Botero", 0.2, 0.8, 0.08);
+            PlacesToShow[3]= new Place("MUSEO","Museo de Zea", 0.3, 0.65, 0.23);
+            PlacesToShow[4]= new Place("MUSEO","MUSEO DEL ORO", 0.13, 0.56, 0.12);
+            PlacesToShow[5]= new Place("MUSEO","MUSEO DE ARTE COLONIAL", 0.3, 0.67, 0.14);
+            PlacesToShow[6]= new Place("MUSEO","MUSEO HISTORICO DE LA POLICIA NACIONAL", 0.34, 0.3, 0.33);
+            PlacesToShow[8]= new Place("MUSEO","MUSEO DE LOS NIÑOS", 0.05, 0.65, 0.03);
+            PlacesToShow[7]= new Place("MUSEO","Museo Nacional", 0.15, 0.4, 0.12);
+            PlacesToShow[9]= new Place("MUSEO","MUSEO MILITAR", 0.07, 0.5, 0.6);*/
 
         }
     }
@@ -104,7 +149,7 @@ public class ListActivity extends AppCompatActivity {
             LocalBinder binder = (LocalBinder) service;
             tcpService = binder.getService();
 
-            PlacesToShow = tcpService.getPlaces();
+            //PlacesToShow = tcpService.getPlaces();
             ListAdapter MyAdapter = new MyAdapter(ListActivity.this, PlacesToShow);
 
             ListView ListPlaces = (ListView) findViewById(R.id.MyList);
